@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    service: muleexample
+  name: muleexample
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: muleexample-selector
+    spec:
+     containers:
+     - image: muleexample1
+       name: muleexample
+       imagePullPolicy: IfNotPresent
+       ports:
+        - containerPort: 8080
+          name: cacheport
+          protocol: TCP
